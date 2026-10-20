@@ -1,0 +1,21 @@
+
+name: Day 1 First Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  first-job:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print welcome message
+        run: echo "Hello from GitHub Actions"
+
+      - name: Check Python version
+        run: python3 --version
+
+      - name: Check current directory
+        run: pwd
