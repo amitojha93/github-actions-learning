@@ -1,22 +1,11 @@
-name: Sequential Pipeline
+name: Manual Deployment
 
 on:
   workflow_dispatch:
 
 jobs:
-  validate:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Validating configuration"
-
-  test:
-    needs: validate
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Running tests"
-
   deploy:
-    needs: test
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Deploying application"
+      - name: Display environment
+        run: echo "Ready for deployment"
