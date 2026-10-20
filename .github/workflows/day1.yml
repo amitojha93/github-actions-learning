@@ -1,21 +1,13 @@
-
-name: Day 1 First Workflow
+name: Trigger Demo
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
-  first-job:
+  demo:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Print welcome message
-        run: echo "Hello from GitHub Actions1"
-
-      - name: Check Python version
-        run: python3 --version
-
-      - name: Check current directory
-        run: pwd
+      - name: Print message
+        run: echo "Workflow started"
