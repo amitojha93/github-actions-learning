@@ -1,13 +1,22 @@
-name: Trigger Demo
+name: Sequential Pipeline
 
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 jobs:
-  demo:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Print message
-        run: echo "Workflow started"
+      - run: echo "Validating configuration"
+
+  test:
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Running tests"
+
+  deploy:
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Deploying application"
